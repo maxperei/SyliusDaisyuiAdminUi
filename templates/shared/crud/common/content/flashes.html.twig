@@ -1,0 +1,60 @@
+{% set session = _context.app.session|default(null) %}
+
+{% if session is not null and session.started %}
+    {% set types = {
+        'success': {
+            'icon': 'tabler:circle-check',
+            'class': 'alert-success'
+        },
+        'error': {
+            'icon': 'tabler:exclamation-circle',
+            'class': 'alert-error'
+        },
+        'info': {
+            'icon': 'tabler:info-circle',
+            'class': 'alert-info'
+        },
+        'warning': {
+            'icon': 'tabler:alert-triangle',
+            'class': 'alert-warning'
+        },
+    } %}
+
+    <div class="grid w-full gap-4" {{ sylius_test_html_attribute('sylius-flashes-container') }}>
+        {% for type in ['success', 'error', 'info', 'warning'] %}
+            {% for flash in session.flashbag.get(type) %}
+                <div
+                    {{ stimulus_controller('@sylius/daisyui-admin-ui/dismissible') }}
+                    class="alert alert-soft alert-vertical sm:alert-horizontal {{ types[type]['class'] }}"
+                    role="alert"
+                    {{ sylius_test_html_attribute('sylius-flash-message') }}
+                    {{ sylius_test_html_attribute('sylius-flash-message-type', type) }}
+                >
+                    <div>
+                        {{ ux_icon(types[type]['icon'], {class: 'w-6 h-6', width: 'auto', height: 'auto'}) }}
+                    </div>
+                    <div class="mx-2">
+                        <h2 class="font-bold">
+                            {% set header = 'sylius.ui.' ~ type %}
+                            {{ header|trans }}
+                        </h2>
+                        <div class="text-xs">
+                            {% if flash is iterable %}
+                                {{ flash.message|trans(flash.parameters, 'flashes') }}
+                            {% else %}
+                                {{ flash|trans({}, 'flashes') }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <span
+                        class="justify-self-end cursor-pointer"
+                        data-action="click->sylius--daisyui-admin-ui--dismissible#close"
+                        aria-label="Close"
+                    >
+                        {{ ux_icon('tabler:x') }}
+                    </span>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endif %}
