@@ -1,0 +1,27 @@
+{
+    "devDependencies": {
+        "@tailwindcss/cli": "^4.1.18",
+        "daisyui": "^5.5.14",
+        "stimulus-use": "^0.52.3",
+        "tailwindcss": "^4.1.18"
+    },
+    "scripts": {
+        "build": "tailwindcss -i ./styles/syliusdaisyuiadminui.css -o ../public/styles/app.css --minify",
+        "watch": "tailwindcss -i ./styles/syliusdaisyuiadminui.css -o ../public/styles/app.css --watch"
+    },
+    "symfony": {
+        "controllers": {
+            "dismissible": {
+                "main": "controllers/dismissible_controller.js",
+                "enabled": true,
+                "webpackMode": "lazy",
+                "fetch": "lazy"
+            }
+        },
+        "importmap": {
+            "daisyui": "^5.5.14",
+            "stimulus-use": "^0.52.3",
+            "tailwindcss": "^4.1.18"
+        }
+    }
+}
