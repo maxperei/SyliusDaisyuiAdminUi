@@ -119,7 +119,23 @@ sylius_twig_hooks:
                 template: '@SyliusDaisyuiAdminUi/shared/layout/stylesheets.html.twig' # redefine the default template
 ```
 
-### 8. Building Assets
+### 8. Stimulus controllers
+
+Bunch of new components should have appeared in your `assets/controllers.json` thanks to the `symfony-ux` tag:
+
+```json
+{
+    "controllers": {
+        "@sylius/daisyui-admin-ui": {
+            "dismissible": {
+                "enabled": true,
+                "fetch": "lazy"
+            }
+        }
+    }
+}
+```
+### 9. Building Assets
 
 Build your assets using your configured asset build process:
 
