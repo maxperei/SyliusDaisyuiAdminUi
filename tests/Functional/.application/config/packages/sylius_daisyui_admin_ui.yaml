@@ -1,0 +1,12 @@
+imports:
+    - { resource: '../../../../../config/app.php' }
+
+sylius_twig_hooks:
+    hooks:
+        'sylius_admin.base#importmap':
+            importmap:
+                enabled: false
+        'sylius_admin.base#stylesheets':
+            styles:
+                enabled: true
+                template: '@SyliusDaisyuiAdminUi/shared/layout/stylesheets.html.twig'
