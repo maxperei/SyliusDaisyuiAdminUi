@@ -22,6 +22,18 @@
         <env name="SHELL_VERBOSITY" value="-1" />
         <!-- ###- symfony/framework-bundle ### -->
 
+        <server name="SYMFONY_DEPRECATIONS_HELPER" value="disabled" />
+
+        <server name="PANTHER_NO_SANDBOX" value="1" />
+        <server name="PANTHER_APP_ENV" value="test" />
+        <server name="PANTHER_CHROME_ARGUMENTS" value="--headless --no-sandbox --disable-dev-shm-usage --hide-scrollbars" />
+        <server name="PANTHER_WEB_SERVER_DIR" value="./tests/Functional/.application/public" />
+        <server name="PANTHER_ERROR_SCREENSHOT_DIR" value="./tests/Functional/.application/var/error-screenshots" />
+        <server name="PANTHER_WEB_SERVER_ROUTER" value="router.php" />
         <env name="KERNEL_CLASS" value="TestApplication\Sylius\DaisyuiAdminUi\Kernel" />
     </php>
+
+    <extensions>
+        <bootstrap class="Symfony\Component\Panther\ServerExtension" />
+    </extensions>
 </phpunit>
