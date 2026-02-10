@@ -24,6 +24,7 @@
 }
 
 @source "../../templates/**/*.html.twig";
+@source "../../vendor/symfony/twig-bridge/Resources/views/Form/tailwind_2_layout.html.twig";
 
 @font-face {
     font-family: 'Inter';
@@ -31,3 +32,22 @@
     font-weight: 1 999;
 }
 
+.page {
+    @apply container mx-auto min-h-screen;
+}
+
+.label.required:after {
+    @apply text-error content-["*"]
+}
+
+.checkbox:checked {
+    @apply bg-primary border-primary;
+}
+
+.checkbox:before {
+    @apply bg-white;
+}
+
+.btn {
+    @apply font-normal;
+}

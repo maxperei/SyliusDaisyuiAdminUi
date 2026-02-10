@@ -1,5 +1,7 @@
 {
     "name": "sylius/daisyui-admin-ui",
+    "description": "A Symfony UX bundle that integrates DaisyUI components into your Sylius admin interface.",
+    "license": "MIT",
     "type": "library",
     "keywords": [
         "symfony-ux"
@@ -9,16 +11,36 @@
         "sylius/grid-bundle": "^1.14",
         "sylius/resource-bundle": "^1.13",
         "sylius/twig-extra": "^0.10",
-        "sylius/twig-hooks": "^0.10",
-        "symfony/http-kernel": "^6.4 || ^7.4 || ^8.0",
+        "sylius/twig-hooks": "^0.10.0",
+        "symfony/asset": "^6.4 || ^7.4 || ^8.0",
         "symfony/http-client": "^6.4 || ^7.4 || ^8.0",
+        "symfony/http-kernel": "^6.4 || ^7.4 || ^8.0",
         "symfony/security-bundle": "^6.4 || ^7.4 || ^8.0",
         "symfony/ux-icons": "^2.32",
         "tales-from-a-dev/twig-tailwind-extra": "^1.0"
     },
+    "require-dev": {
+        "doctrine/doctrine-bundle": "^2.13 || ^3.0 || ^4.0",
+        "doctrine/orm": "^3.3 || ^4.0",
+        "phpunit/phpunit": "^10.5",
+        "symfony/browser-kit": "^6.4 || ^7.4 || ^8.0",
+        "symfony/console": "^6.4 || ^7.4 || ^8.0",
+        "symfony/css-selector": "^6.4 || ^7.4 || ^8.0",
+        "symfony/dotenv": "^6.4 || ^7.4 || ^8.0",
+        "symfony/framework-bundle": "^6.4 || ^7.4 || ^8.0",
+        "symfony/panther": "^2.4",
+        "symfony/runtime": "^6.4 || ^7.4 || ^8.0",
+        "symfony/yaml": "^6.4 || ^7.4 || ^8.0"
+    },
     "autoload": {
         "psr-4": {
             "Sylius\\DaisyuiAdminUi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TestApplication\\Sylius\\DaisyuiAdminUi\\": "tests/Functional/.application/src/",
+            "Tests\\Sylius\\DaisyuiAdminUi\\": "tests/"
         }
     },
     "config": {
@@ -27,12 +49,6 @@
         },
         "sort-packages": true
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../**"
-        }
-    ],
     "extra": {
         "symfony": {
             "require": "7.4.*"

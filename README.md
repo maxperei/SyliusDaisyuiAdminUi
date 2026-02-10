@@ -4,7 +4,15 @@ A Symfony bundle providing a modern admin UI built with DaisyUI for Sylius appli
 
 ## Overview
 
-**SyliusDaisyuiAdminUi** is a Symfony UX bundle that integrates DaisyUI components into your Sylius admin interface. It's designed to work seamlessly with Symfony's AssetMapper for efficient asset management in Symfony 7.4+.
+**SyliusDaisyuiAdminUi** is a Symfony UX bundle that integrates DaisyUI components into your Sylius admin interface. It's designed to work seamlessly with Symfony's AssetMapper for efficient asset management in Symfony 6.4+.
+
+## Screenshots
+
+### Login Page
+
+| Light Theme                                                  | Dark Theme                                                 |
+|--------------------------------------------------------------|------------------------------------------------------------|
+| ![Login Page - Light Theme](./screens/login-page--light.png) | ![Login Page - Dark Theme](./screens/login-page--dark.png) |
 
 ## Prerequisites
 
@@ -119,7 +127,23 @@ sylius_twig_hooks:
                 template: '@SyliusDaisyuiAdminUi/shared/layout/stylesheets.html.twig' # redefine the default template
 ```
 
-### 8. Building Assets
+### 8. Stimulus controllers
+
+Bunch of new components should have appeared in your `assets/controllers.json` thanks to the `symfony-ux` tag:
+
+```json
+{
+    "controllers": {
+        "@sylius/daisyui-admin-ui": {
+            "dismissible": {
+                "enabled": true,
+                "fetch": "lazy"
+            }
+        }
+    }
+}
+```
+### 9. Building Assets
 
 Build your assets using your configured asset build process:
 

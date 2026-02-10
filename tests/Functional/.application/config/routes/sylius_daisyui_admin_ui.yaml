@@ -1,0 +1,3 @@
+sylius_daisyui_admin_ui:
+    resource: '@SyliusDaisyuiAdminUiBundle/config/routes.php'
+    prefix: /admin

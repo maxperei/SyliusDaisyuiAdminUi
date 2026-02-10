@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- https://phpunit.de/manual/current/en/appendixes.configuration.html -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
+         colors="true"
+         bootstrap="tests/Functional/.application/config/bootstrap.php"
+>
+    <testsuites>
+        <testsuite name="daisyui_admin_ui_tests">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <php>
+        <ini name="display_errors" value="1" />
+        <ini name="error_reporting" value="-1" />
+
+        <!-- ###+ symfony/framework-bundle ### -->
+        <env name="APP_DEBUG" value="1"/>
+        <env name="APP_ENV" value="test"/>
+        <env name="SHELL_VERBOSITY" value="-1" />
+        <!-- ###- symfony/framework-bundle ### -->
+
+        <server name="SYMFONY_DEPRECATIONS_HELPER" value="disabled" />
+
+        <server name="PANTHER_NO_SANDBOX" value="1" />
+        <server name="PANTHER_APP_ENV" value="test" />
+        <server name="PANTHER_CHROME_ARGUMENTS" value="--headless --no-sandbox --disable-dev-shm-usage --hide-scrollbars" />
+        <server name="PANTHER_WEB_SERVER_DIR" value="./tests/Functional/.application/public" />
+        <server name="PANTHER_ERROR_SCREENSHOT_DIR" value="./tests/Functional/.application/var/error-screenshots" />
+        <server name="PANTHER_WEB_SERVER_ROUTER" value="router.php" />
+        <env name="KERNEL_CLASS" value="TestApplication\Sylius\DaisyuiAdminUi\Kernel" />
+    </php>
+
+    <extensions>
+        <bootstrap class="Symfony\Component\Panther\ServerExtension" />
+    </extensions>
+</phpunit>

@@ -1,0 +1,15 @@
+{% extends '@!SyliusAdminUi/security/login.html.twig' %}
+
+{% block body_class %}flex flex-column{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% block importmap %}
+        {% hook generic_hook ~ '#importmap' %}
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    {% hook 'sylius_admin.security.theme_switch' %}
+    {{ parent() }}
+{% endblock %}
