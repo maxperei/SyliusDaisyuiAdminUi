@@ -6,6 +6,14 @@ A Symfony bundle providing a modern admin UI built with DaisyUI for Sylius appli
 
 **SyliusDaisyuiAdminUi** is a Symfony UX bundle that integrates DaisyUI components into your Sylius admin interface. It's designed to work seamlessly with Symfony's AssetMapper for efficient asset management in Symfony 6.4+.
 
+## Screenshots
+
+### Login Page
+
+| Light Theme                                                  | Dark Theme                                                 |
+|--------------------------------------------------------------|------------------------------------------------------------|
+| ![Login Page - Light Theme](./screens/login-page--light.png) | ![Login Page - Dark Theme](./screens/login-page--dark.png) |
+
 ## Prerequisites
 
 - **Symfony 6.4+**
