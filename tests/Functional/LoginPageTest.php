@@ -20,9 +20,9 @@ class LoginPageTest extends PantherTestCase
     {
         $this->client->request('GET', '/admin/login');
 
-        $this->assertSelectorAttributeContains('body', 'class', 'flex flex-column');
-        $this->assertSelectorTextContains('h2.card-title', 'sylius.ui.login_to_your_account');
-        $this->assertSelectorTextContains('button[type=submit]', 'sylius.ui.login');
+        self::assertSelectorAttributeContains('body', 'class', 'flex flex-column');
+        self::assertSelectorTextContains('h2.card-title', 'sylius.ui.login_to_your_account');
+        self::assertSelectorTextContains('button[type=submit]', 'sylius.ui.login');
 
         $this->switchThemeAndTakeScreenshots();
     }

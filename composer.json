@@ -1,5 +1,7 @@
 {
     "name": "sylius/daisyui-admin-ui",
+    "description": "A Symfony UX bundle that integrates DaisyUI components into your Sylius admin interface.",
+    "license": "MIT",
     "type": "library",
     "keywords": [
         "symfony-ux"
