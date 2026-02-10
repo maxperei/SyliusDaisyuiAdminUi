@@ -80,21 +80,23 @@ symfonycasts_tailwind:
 ### 6. Register Assets with ImportMap
 
 Update your `importmap.php` configuration file to register the DaisyUI library and its entrypoint:
+Your own configuration may contain at least the following entries:
 
 ```php
-'sylius/daisyuiadminui' => [
-    'path' => './vendor/sylius/daisyui-admin-ui/assets/syliusdaisyuiadminui.js',
-    'entrypoint' => true,
-],
-'daisyui' => [
-    'version' => '5.5.17',
-],
-'daisyui/daisyui.min.css' => [
-    'version' => '5.5.17',
-    'type' => 'css',
-],
+    '@symfony/stimulus-bundle' => [
+        'path' => './assets/dist/@symfony/stimulus-bundle/loader.js',
+    ],
+    'sylius/daisyuiadminui' => [
+        'path' => './vendor/sylius/daisyui-admin-ui/assets/syliusdaisyuiadminui.js',
+        'entrypoint' => true,
+    ],
+    '@hotwired/stimulus' => [
+        'version' => '3.2.2',
+    ],
+    'stimulus-use' => [
+        'version' => '0.52.3',
+    ],
 ```
-
 
 ### 7. Included in your templates
 

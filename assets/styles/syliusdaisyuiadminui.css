@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
-@plugin "daisyui" {
+@plugin "../dist/daisyui.mjs" {
     themes: light --default, dark;
 }
 
-@plugin "daisyui/theme" {
+@plugin "../dist/daisyui-theme.mjs" {
     name: "light";
     default: true;
     --color-primary: rgb(34, 185, 154);
@@ -14,7 +14,7 @@
     --font-sans: 'Inter';
 }
 
-@plugin "daisyui/theme" {
+@plugin "../dist/daisyui-theme.mjs" {
     name: "dark";
     --color-primary: rgb(34, 185, 154);
     --color-primary-content: rgb(255, 255, 255);

@@ -27,10 +27,20 @@ class LoginPageTest extends PantherTestCase
         $this->switchThemeAndTakeScreenshots();
     }
 
-    private function switchThemeAndTakeScreenshots(): void
+    public function testImportmapEntrypointIsLoaded(): void
     {
         $this->client->request('GET', '/admin/login');
+        $crawler = $this->client->getCrawler();
+        $importmap = $crawler->filter('head script[type="importmap"]');
 
+        self::assertCount(1, $importmap);
+        self::assertStringContainsString('"sylius/daisyuiadminui"', $this->client->getPageSource());
+        self::assertStringContainsString('"@symfony/stimulus-bundle"', $this->client->getPageSource());
+        self::assertStringContainsString('"stimulus-use"', $this->client->getPageSource());
+    }
+
+    private function switchThemeAndTakeScreenshots(): void
+    {
         $this->client->takeScreenshot('screens/login-page--light.png');
         $this->client->getCrawler()->filter('label.toggle')->click();
         $this->client->takeScreenshot('screens/login-page--dark.png');

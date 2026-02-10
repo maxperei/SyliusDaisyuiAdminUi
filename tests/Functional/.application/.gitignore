@@ -10,3 +10,5 @@
 ###< symfony/framework-bundle ###
 
 composer.lock
+/assets/vendor/
+/public/assets/

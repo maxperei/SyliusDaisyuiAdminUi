@@ -15,7 +15,9 @@ use Symfony\Bundle\SecurityBundle\SecurityBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\UX\Icons\UXIconsBundle;
+use Symfony\UX\StimulusBundle\StimulusBundle;
 use Symfony\UX\TwigComponent\TwigComponentBundle;
+use Symfonycasts\TailwindBundle\SymfonycastsTailwindBundle;
 use TalesFromADev\Twig\Extra\Tailwind\Bridge\Symfony\Bundle\TalesFromADevTwigExtraTailwindBundle;
 
 class Kernel extends BaseKernel
@@ -38,6 +40,8 @@ class Kernel extends BaseKernel
         yield new SyliusTwigHooksBundle();
         yield new SyliusTwigExtraBundle();
         yield new TalesFromADevTwigExtraTailwindBundle();
+        yield new SymfonycastsTailwindBundle();
+        yield new StimulusBundle();
         yield new SyliusAdminUiBundle();
         yield new SyliusDaisyuiAdminUiBundle();
     }

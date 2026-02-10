@@ -66,11 +66,11 @@ jobs:
       - name: Install assets to test application directory
         run: |
           cd tests/Functional/.application
-          bin/console assets:install
+          bin/console importmap:install
+          bin/console tailwind:build ../../../assets/styles/syliusdaisyuiadminui.css
+          bin/console asset-map:compile
 
       - name: Run tests
-        env:
-          DEFAULT_URI: https://127.0.0.1:8080
         run: vendor/bin/phpunit
 
       - name: Upload screenshots on failure
