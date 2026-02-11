@@ -31,7 +31,6 @@ If not already installed via composer, add the bundle:
 composer require sylius/daisyui-admin-ui
 ```
 
-
 ### 2. Enable the Bundle
 
 Register the bundle in your `config/bundles.php`:
@@ -40,8 +39,7 @@ Register the bundle in your `config/bundles.php`:
 Sylius\DaisyuiAdminUi\Symfony\SyliusDaisyuiAdminUiBundle::class => ['all' => true],
 ```
 
-
-### 3. Import Bundle Configuration
+### 3. Import Bundle Configuration & Routing
 
 Add the bundle's configuration to a new `config/packages/sylius_daisyui_admin_ui.yaml` configuration file:
 
@@ -50,6 +48,12 @@ imports:
     - { resource: '@SyliusDaisyuiAdminUiBundle/config/app.php' }
 ```
 
+Add the bundle's routing to a new `config/routes/sylius_daisyui_admin_ui.yaml` configuration file:
+
+```yaml
+imports:
+    - { resource: '@SyliusDaisyuiAdminUiBundle/config/routes.php' }
+```
 
 ### 4. Configure AssetMapper Paths
 
@@ -63,7 +67,6 @@ framework:
             - vendor/sylius/daisyui-admin-ui/assets/
 ```
 
-
 ### 5. Configure Tailwind CSS
 
 Update your `config/packages/symfonycasts_tailwind.yaml` to include the bundle's stylesheet:
@@ -76,13 +79,13 @@ symfonycasts_tailwind:
         - vendor/sylius/daisyui-admin-ui/assets/styles/syliusdaisyuiadminui.css
 ```
 
-
 ### 6. Register Assets with ImportMap
 
-Update your `importmap.php` configuration file to register the DaisyUI library and its entrypoint:
+Update your `importmap.php` configuration file to register the DaisyUI library and its entrypoint.
 Your own configuration may contain at least the following entries:
 
 ```php
+return [
     '@symfony/stimulus-bundle' => [
         'path' => './assets/dist/@symfony/stimulus-bundle/loader.js',
     ],
@@ -96,6 +99,7 @@ Your own configuration may contain at least the following entries:
     'stimulus-use' => [
         'version' => '0.52.3',
     ],
+];
 ```
 
 ### 7. Included in your templates
@@ -145,6 +149,7 @@ Bunch of new components should have appeared in your `assets/controllers.json` t
     }
 }
 ```
+
 ### 9. Building Assets
 
 Build your assets using your configured asset build process:
@@ -188,4 +193,4 @@ After installation, verify that:
 
 - [DaisyUI Documentation](https://daisyui.com/)
 - [Symfony AssetMapper Documentation](https://symfony.com/doc/current/frontend/asset_mapper.html)
-- [Sylius Documentation](https://docs.sylius.com/)
+- [Sylius Stack Documentation](https://stack.sylius.com)
