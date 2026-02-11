@@ -1,0 +1,10 @@
+{
+    "controllers": {
+        "@sylius/daisyui-admin-ui": {
+            "dismissible": {
+                "enabled": true,
+                "fetch": "lazy"
+            }
+        }
+    }
+}

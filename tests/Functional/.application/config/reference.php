@@ -280,7 +280,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         }>,
  *     },
  *     asset_mapper?: bool|array{ // Asset Mapper configuration
- *         enabled?: bool|Param, // Default: false
+ *         enabled?: bool|Param, // Default: true
  *         paths?: array<string, scalar|Param|null>,
  *         excluded_patterns?: list<scalar|Param|null>,
  *         exclude_dotfiles?: bool|Param, // If true, any files starting with "." will be excluded from the asset mapper. // Default: true
@@ -1260,6 +1260,19 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         additional_configuration?: mixed, // Default: []
  *     },
  * }
+ * @psalm-type SymfonycastsTailwindConfig = array{
+ *     input_css?: list<scalar|Param|null>,
+ *     config_file?: scalar|Param|null, // Path to the tailwind.config.js file // Default: "%kernel.project_dir%/tailwind.config.js"
+ *     binary?: scalar|Param|null, // The tailwind binary to use instead of downloading a new one // Default: null
+ *     binary_version?: scalar|Param|null, // Tailwind CLI version to download - null means the latest version // Default: null
+ *     binary_platform?: "auto"|"linux-arm64"|"linux-arm64-musl"|"linux-x64"|"linux-x64-musl"|"macos-arm64"|"macos-x64"|"windows-x64"|Param, // Tailwind CLI platform to download - "auto" will try to detect the platform automatically // Default: "auto"
+ *     postcss_config_file?: scalar|Param|null, // Path to PostCSS config file which is passed to the Tailwind CLI // Default: null
+ *     strict_mode?: bool|Param|null, // When enabled, an exception will be thrown if there are no built assets (default: false in `test` env, true otherwise) // Default: null
+ * }
+ * @psalm-type StimulusConfig = array{
+ *     controller_paths?: list<scalar|Param|null>,
+ *     controllers_json?: scalar|Param|null, // Default: "%kernel.project_dir%/assets/controllers.json"
+ * }
  * @psalm-type SyliusAdminUiConfig = array{
  *     routing?: array<string, scalar|Param|null>,
  * }
@@ -1276,6 +1289,8 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     sylius_twig_hooks?: SyliusTwigHooksConfig,
  *     sylius_twig_extra?: SyliusTwigExtraConfig,
  *     tales_from_a_dev_twig_extra_tailwind?: TalesFromADevTwigExtraTailwindConfig,
+ *     symfonycasts_tailwind?: SymfonycastsTailwindConfig,
+ *     stimulus?: StimulusConfig,
  *     sylius_admin_ui?: SyliusAdminUiConfig,
  *     "when@prod"?: array{
  *         imports?: ImportsConfig,

@@ -13,6 +13,7 @@
         "sylius/twig-extra": "^0.10",
         "sylius/twig-hooks": "^0.10.0",
         "symfony/asset": "^6.4 || ^7.4 || ^8.0",
+        "symfony/asset-mapper": "^6.4 || ^7.4 || ^8.0",
         "symfony/http-client": "^6.4 || ^7.4 || ^8.0",
         "symfony/http-kernel": "^6.4 || ^7.4 || ^8.0",
         "symfony/security-bundle": "^6.4 || ^7.4 || ^8.0",
@@ -30,7 +31,9 @@
         "symfony/framework-bundle": "^6.4 || ^7.4 || ^8.0",
         "symfony/panther": "^2.4",
         "symfony/runtime": "^6.4 || ^7.4 || ^8.0",
-        "symfony/yaml": "^6.4 || ^7.4 || ^8.0"
+        "symfony/stimulus-bundle": "^2.32",
+        "symfony/yaml": "^6.4 || ^7.4 || ^8.0",
+        "symfonycasts/tailwind-bundle": "^0.12.0"
     },
     "autoload": {
         "psr-4": {
