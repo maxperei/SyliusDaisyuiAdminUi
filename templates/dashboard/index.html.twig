@@ -1,0 +1,13 @@
+{% extends '@!SyliusAdminUi/base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% block importmap %}
+        {% hook generic_hook ~ '#importmap' %}
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    {% hook ['sylius_admin.dashbord.index', 'sylius_admin.common.index'] %}
+    {{ parent() }}
+{% endblock %}
