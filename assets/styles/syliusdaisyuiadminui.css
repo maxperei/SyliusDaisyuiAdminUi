@@ -19,6 +19,7 @@
     --color-primary: rgb(34, 185, 154);
     --color-primary-content: rgb(255, 255, 255);
     --color-secondary: rgb(108, 117, 125);
+    --page-scroll-bg: var(--root-bg);
     --card-p: 1rem 1.25rem;
     --font-sans: 'Inter';
 }
@@ -33,7 +34,7 @@
 }
 
 .page {
-    @apply container mx-auto min-h-screen;
+    @apply mx-auto min-h-screen;
 }
 
 .label.required:after {
