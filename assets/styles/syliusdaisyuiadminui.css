@@ -34,7 +34,7 @@
 }
 
 .page {
-    @apply mx-auto min-h-screen;
+    @apply mx-auto min-h-screen w-full;
 }
 
 .label.required:after {
