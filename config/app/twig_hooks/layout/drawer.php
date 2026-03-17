@@ -24,9 +24,6 @@ return static function (ContainerConfigurator $container): void {
                 'sidebar' => [
                     'template' => '@SyliusDaisyuiAdminUi/shared/crud/common/drawer/sidebar.html.twig',
                 ],
-//                'menu' => [
-//                    'template' => '@SyliusDaisyuiAdminUi/shared/crud/common/sidebar/menu.html.twig',
-//                ]
             ],
             'sylius_admin.common.component.drawer.navbar' => [
                 'brand' => [
@@ -40,6 +37,9 @@ return static function (ContainerConfigurator $container): void {
                 'brand' => [
                     'template' => '@SyliusDaisyuiAdminUi/shared/crud/common/drawer/sidebar/brand.html.twig',
                 ],
+                'menu' => [
+                    'template' => '@SyliusDaisyuiAdminUi/shared/crud/common/drawer/sidebar/menu.html.twig',
+                ]
             ],
         ],
     ]);

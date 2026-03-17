@@ -11,6 +11,8 @@
     --color-primary-content: rgb(255, 255, 255);
     --color-secondary: rgb(108, 117, 125);
     --card-p: 1rem 1.25rem;
+    --menu-item-spacing-y: .65rem;
+    --menu-item-spacing-x: --spacing(4);
     --font-sans: 'Inter';
 }
 
@@ -21,7 +23,10 @@
     --color-secondary: rgb(108, 117, 125);
     --page-scroll-bg: var(--root-bg);
     --card-p: 1rem 1.25rem;
+    --menu-item-spacing-y: .65rem;
+    --menu-item-spacing-x: --spacing(4);
     --font-sans: 'Inter';
+    --font-mono: 'Menlo';
 }
 
 @source "../../templates/**/*.html.twig";
@@ -51,4 +56,35 @@
 
 .btn {
     @apply font-normal;
+}
+
+.collapse {
+    .menu-item {
+        @apply py-(--menu-item-spacing-y) px-(--menu-item-spacing-x) font-medium text-base-content/80 text-[.95rem] hover:text-primary [&:hover>.menu-item-icon]:text-base-content/80 [&:hover::after]:text-base-content/80 [&::after]:inset-shadow-[1px_1px];
+
+        &:hover {
+            @apply bg-transparent;
+        }
+
+        &:active {
+            @apply relative top-px;
+        }
+
+        .menu-item-icon {
+            @apply opacity-50 size-5 md:hidden lg:inline-block;
+        }
+
+        + .collapse-content {
+            @apply *:text-sm *:font-light pt-(--menu-item-spacing-y) min-h-11;
+            padding-left: calc(var(--spacing) + 1.5rem);
+        }
+    }
+
+    details[open] {
+        .menu-item {
+            > span:not(.menu-item-icon) {
+                @apply text-primary;
+            }
+        }
+    }
 }
