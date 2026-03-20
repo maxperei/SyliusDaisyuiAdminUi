@@ -16,6 +16,12 @@
                 "enabled": true,
                 "webpackMode": "lazy",
                 "fetch": "lazy"
+            },
+            "menu-search": {
+                "main": "controllers/menu-search_controller.js",
+                "enabled": true,
+                "webpackMode": "lazy",
+                "fetch": "lazy"
             }
         },
         "importmap": {

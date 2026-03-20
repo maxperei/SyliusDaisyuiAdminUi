@@ -11,8 +11,8 @@
     --color-primary-content: rgb(255, 255, 255);
     --color-secondary: rgb(108, 117, 125);
     --card-p: 1rem 1.25rem;
-    --menu-item-spacing-y: .65rem;
-    --menu-item-spacing-x: --spacing(4);
+    --nav-link-spacing-y: .65rem;
+    --nav-link-spacing-x: --spacing(4);
     --font-sans: 'Inter';
     --font-mono: 'Menlo';
 }
@@ -24,8 +24,8 @@
     --color-secondary: rgb(108, 117, 125);
     --page-scroll-bg: var(--root-bg);
     --card-p: 1rem 1.25rem;
-    --menu-item-spacing-y: .65rem;
-    --menu-item-spacing-x: --spacing(4);
+    --nav-link-spacing-y: .65rem;
+    --nav-link-spacing-x: --spacing(4);
     --font-sans: 'Inter';
     --font-mono: 'Menlo';
 }
@@ -70,31 +70,36 @@ body {
 }
 
 .collapse {
-    .menu-item {
-        @apply py-(--menu-item-spacing-y) px-(--menu-item-spacing-x) font-medium text-base-content/80 text-[.95rem] hover:text-primary [&:hover>.menu-item-icon]:text-base-content/80 [&:hover::after]:text-base-content/80 [&::after]:inset-shadow-[1px_1px];
+    .nav-link {
+        @apply py-(--nav-link-spacing-y) px-(--nav-link-spacing-x) font-medium text-base-content/80 text-[.95rem]
+        hover:text-primary hover:bg-transparent active:relative active:top-px *:transition-colors
+        [&::after]:text-base-content/80 [&::after]:inset-shadow-[1px_1px];
 
-        &:hover {
-            @apply bg-transparent;
-        }
-
-        &:active {
-            @apply relative top-px;
-        }
-
-        .menu-item-icon {
-            @apply opacity-50 size-5 md:hidden lg:inline-block;
+        .nav-link-icon {
+            @apply text-base-content/50 size-5 inline-block;
         }
 
         + .collapse-content {
-            @apply *:text-sm *:font-light pt-(--menu-item-spacing-y) min-h-11;
-            padding-left: calc(var(--spacing) + 1.5rem);
+            @apply min-h-11 flex flex-col gap-3 pt-(--nav-link-spacing-y) *:text-sm *:font-light;
+
+            .collapse-item {
+                @apply flex items-center gap-1 pl-7 text-base-content/80 hover:text-primary [&.active]:text-primary;
+            }
         }
     }
 
-    details[open] {
-        .menu-item {
-            > span:not(.menu-item-icon) {
-                @apply text-primary;
+    details {
+        &[open] {
+            .nav-link {
+                > span:not(.nav-link-icon) {
+                    @apply text-base-content;
+                }
+
+                &:hover {
+                    > span:not(.nav-link-icon) {
+                        @apply text-primary;
+                    }
+                }
             }
         }
     }

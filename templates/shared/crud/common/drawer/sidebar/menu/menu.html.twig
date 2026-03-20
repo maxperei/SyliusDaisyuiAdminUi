@@ -46,10 +46,10 @@
     {%- endif %}
 
     {% if item.hasChildren %}
-        <li class="{% if attributes.class is defined %}{{ attributes.class }}{% endif %}">
+        <li class="{% if attributes.class is defined %}{{ attributes.class }}{% endif %}" data-sylius--daisyui-admin-ui--menu-search-target="menuItem">
             <details class="collapse" {{ is_active ? 'open' : '' }}>
-                <summary class="collapse-title inline-flex items-center justify-between menu-item">
-                    <span class="menu-item-icon">{{ block('icon') }}</span>
+                <summary class="collapse-title inline-flex items-center justify-between nav-link">
+                    <span class="nav-link-icon">{{ block('icon') }}</span>
                     <span class="mr-auto">{{ block('label') }}</span>
                 </summary>
                 <div class="collapse-content">
@@ -58,9 +58,9 @@
             </details>
         </li>
     {% else %}
-        <li>
-            <a class="menu-item" href="{{ item.uri }}" target="{{ target }}">
-                <span class="menu-item-icon">{{ block('icon') }}</span>
+        <li data-sylius--daisyui-admin-ui--menu-search-target="menuItem">
+            <a class="nav-link" href="{{ item.uri }}" target="{{ target }}">
+                <span class="nav-link-icon">{{ block('icon') }}</span>
                 <span>
                     {{ block('label') }} {% if target == '_blank' %}{{ ux_icon('tabler:external-link', {'class': 'icon icon-sm ms-1 mb-2 opacity-75'}) }}{% endif %}
                 </span>
@@ -86,8 +86,11 @@
         {%- set attributes = attributes|merge({'class': classes|join(' ')}) %}
     {%- endif %}
 
-    <a class="menu-item {% if attributes.class is defined %}{{ attributes.class }}{% endif %}" href="{{ item.uri }}" target="{{ target }}">
-        {{ block('label') }}{% if target == '_blank' %}{{ ux_icon('tabler:external-link', {'class': 'icon icon-sm ms-1 mb-2 opacity-75'}) }}{% endif %}
+    <a
+        class="collapse-item {% if attributes.class is defined %}{{ attributes.class }}{% endif %}"
+        href="{{ item.uri }}" target="{{ target }}"
+    >
+        {{ block('label') }}{% if target == '_blank' %}{{ ux_icon('tabler:external-link', {'class': 'opacity-75'}) }}{% endif %}
     </a>
 {% endblock %}
 
