@@ -35,7 +35,7 @@ class DashboardPageTest extends PantherTestCase
         self::assertStringContainsString('"stimulus-use"', $this->client->getPageSource());
     }
 
-    public function testDashboardDrawerSidebar(): void
+    public function testDashboardDrawerSidebarAndTakeScreenshot(): void
     {
         $this->client->request('GET', '/admin/');
         self::assertSelectorTextContains('details.collapse summary.collapse-title', 'app.menu.library');
@@ -54,5 +54,7 @@ class DashboardPageTest extends PantherTestCase
         $this->client->getCrawler()->filter('[data-controller="sylius--daisyui-admin-ui--menu-search"] input')->sendKeys('books');
         self::assertSelectorIsVisible('details.collapse summary.collapse-title');
         self::assertSelectorIsNotVisible('.nav-link');
+
+        $this->client->takeScreenshot('screens/dashboard-drawer--search.png');
     }
 }
