@@ -1,0 +1,39 @@
+.drawer-toggle {
+    + .drawer-content .toggle-icon {
+        @apply bg-current relative rounded-[10px] h-0.5 w-[1.25em];
+        transition: top .2s .2s, bottom .2s .2s, transform .2s, opacity 0s .2s;
+
+        &:after,
+        &:before {
+            @apply block absolute left-0 h-full w-full rounded-[inherit];
+            background: inherit;
+            content: "";
+            transition: inherit;
+        }
+
+        &:after {
+            content: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(33, 37, 41, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+            bottom: -.45em;
+        }
+
+        &:before {
+            top: -.45em;
+        }
+    }
+
+    &:checked {
+        + .drawer-content .toggle-icon {
+            transform: rotate(45deg);
+            transition: top .3s, bottom .3s, transform .3s .3s, opacity 0s .3s;
+
+            &:before {
+                top: 0;
+                transform: rotate(-90deg);
+            }
+
+            &:after {
+                @apply bottom-0 opacity-0;
+            }
+        }
+    }
+}

@@ -14,6 +14,11 @@ A Symfony bundle providing a modern admin UI built with DaisyUI for Sylius appli
 |--------------------------------------------------------------|------------------------------------------------------------|
 | ![Login Page - Light Theme](./screens/login-page--light.png) | ![Login Page - Dark Theme](./screens/login-page--dark.png) |
 
+
+### Dashboard (WIP)
+
+![Dashboard](./screens/dashboard-drawer--search.png)
+
 ## Prerequisites
 
 - **Symfony 6.4+**
