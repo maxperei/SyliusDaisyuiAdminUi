@@ -1,0 +1,35 @@
+.collapse {
+    .nav-link {
+        @apply py-(--nav-link-spacing-y) px-(--nav-link-spacing-x) font-medium text-base-content/80 text-[.95rem]
+        hover:text-primary hover:bg-transparent active:relative active:top-px *:transition-colors
+        [&::after]:text-base-content/80 [&::after]:inset-shadow-[1px_1px];
+
+        .nav-link-icon {
+            @apply text-base-content/50 size-5 inline-block;
+        }
+
+        + .collapse-content {
+            @apply min-h-11 flex flex-col gap-3 pt-(--nav-link-spacing-y) *:text-sm *:font-light;
+
+            .collapse-item {
+                @apply flex items-center gap-1 pl-7 text-base-content/80 hover:text-primary [&.active]:text-primary;
+            }
+        }
+    }
+
+    details {
+        &[open] {
+            .nav-link {
+                > span:not(.nav-link-icon) {
+                    @apply text-base-content;
+                }
+
+                &:hover {
+                    > span:not(.nav-link-icon) {
+                        @apply text-primary;
+                    }
+                }
+            }
+        }
+    }
+}

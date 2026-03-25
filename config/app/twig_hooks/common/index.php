@@ -9,13 +9,15 @@ return static function (ContainerConfigurator $configurator): void {
         'hooks' => [
             'sylius_admin.base#base_title' => [
                 'default' => [
-                    'template' => '@SyliusDaisyuiAdminUi/shared/layout/title.html.twig',
-                ],
+                    'configuration' => [
+                        'title' => 'Sylius DaisyUI Admin UI | Dashboard',
+                    ]
+                ]
             ],
-            'sylius_admin.base#importmap' => [
-                'importmap' => [
-                    'template' => '@SyliusDaisyuiAdminUi/shared/layout/importmap.html.twig',
-                ],
+            'sylius_admin.common.index' => [
+                'drawer' => [
+                    'template' => '@SyliusDaisyuiAdminUi/shared/crud/common/drawer.html.twig',
+                ]
             ],
         ],
     ]);

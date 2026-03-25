@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "./_drawer.css";
+@import "./_collapse.css";
 
 @plugin "../dist/daisyui.mjs" {
     themes: light --default, dark;
@@ -11,7 +13,10 @@
     --color-primary-content: rgb(255, 255, 255);
     --color-secondary: rgb(108, 117, 125);
     --card-p: 1rem 1.25rem;
+    --nav-link-spacing-y: .65rem;
+    --nav-link-spacing-x: --spacing(4);
     --font-sans: 'Inter';
+    --font-mono: 'Menlo';
 }
 
 @plugin "../dist/daisyui-theme.mjs" {
@@ -19,8 +24,12 @@
     --color-primary: rgb(34, 185, 154);
     --color-primary-content: rgb(255, 255, 255);
     --color-secondary: rgb(108, 117, 125);
+    --page-scroll-bg: var(--root-bg);
     --card-p: 1rem 1.25rem;
+    --nav-link-spacing-y: .65rem;
+    --nav-link-spacing-x: --spacing(4);
     --font-sans: 'Inter';
+    --font-mono: 'Menlo';
 }
 
 @source "../../templates/**/*.html.twig";
@@ -32,8 +41,17 @@
     font-weight: 1 999;
 }
 
+body {
+    font-feature-settings: "liga" 0;
+    font-feature-settings: "cv03", "cv04", "cv11";
+    text-rendering: optimizeLegibility;
+    touch-action: manipulation;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 .page {
-    @apply container mx-auto min-h-screen;
+    @apply mx-auto min-h-screen w-full;
 }
 
 .label.required:after {

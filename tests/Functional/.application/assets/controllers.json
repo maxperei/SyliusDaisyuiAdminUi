@@ -4,6 +4,10 @@
             "dismissible": {
                 "enabled": true,
                 "fetch": "lazy"
+            },
+            "menu-search": {
+                "enabled": true,
+                "fetch": "lazy"
             }
         }
     }

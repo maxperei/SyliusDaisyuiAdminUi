@@ -1,0 +1,100 @@
+{% extends '@KnpMenu/menu.html.twig' %}
+
+{% block root %}
+    <ul class="menu menu-vertical w-full p-0">
+        {{ parent() }}
+    </ul>
+{% endblock %}
+
+{% block list %}
+    {% for item in item.children %}
+        {{ block('item') }}
+    {% endfor %}
+{% endblock %}
+
+{% block item %}
+    {# building the class of the item #}
+    {%- set classes = item.attribute('class') is not empty ? [item.attribute('class')] : [] %}
+    {%- if matcher.isCurrent(item) %}
+        {%- set classes = classes|merge([options.currentClass]) %}
+    {%- elseif matcher.isAncestor(item, options.matchingDepth) %}
+        {%- set classes = classes|merge([options.ancestorClass]) %}
+    {%- endif %}
+    {%- if item.actsLikeFirst %}
+        {%- set classes = classes|merge([options.firstClass]) %}
+    {%- endif %}
+    {%- if item.actsLikeLast %}
+        {%- set classes = classes|merge([options.lastClass]) %}
+    {%- endif %}
+
+    {%- set target = item.linkAttributes and item.linkAttributes['target'] ? item.linkAttributes['target'] : '_self' %}
+
+    {% set is_active = matcher.isCurrent(item) or matcher.isAncestor(item, options.matchingDepth) or item.getExtra('always_open') %}
+
+    {# Mark item as "leaf" (no children) or as "branch" (has children that are displayed) #}
+    {% if item.hasChildren and options.depth is not same as(0) %}
+        {% if options.branch_class is not empty and item.displayChildren %}
+            {%- set classes = classes|merge([options.branch_class]) %}
+        {% endif %}
+    {% elseif options.leaf_class is not empty %}
+        {%- set classes = classes|merge([options.leaf_class]) %}
+    {%- endif %}
+
+    {%- set attributes = item.attributes %}
+    {%- if classes is not empty %}
+        {%- set attributes = attributes|merge({'class': classes|join(' ')}) %}
+    {%- endif %}
+
+    {% if item.hasChildren %}
+        <li class="{% if attributes.class is defined %}{{ attributes.class }}{% endif %}" data-sylius--daisyui-admin-ui--menu-search-target="menuItem">
+            <details class="collapse" {{ is_active ? 'open' : '' }}>
+                <summary class="collapse-title inline-flex items-center justify-between nav-link">
+                    <span class="nav-link-icon">{{ block('icon') }}</span>
+                    <span class="mr-auto">{{ block('label') }}</span>
+                </summary>
+                <div class="collapse-content">
+                    {{ block('children_list') }}
+                </div>
+            </details>
+        </li>
+    {% else %}
+        <li data-sylius--daisyui-admin-ui--menu-search-target="menuItem">
+            <a class="nav-link" href="{{ item.uri }}" target="{{ target }}">
+                <span class="nav-link-icon">{{ block('icon') }}</span>
+                <span>
+                    {{ block('label') }} {% if target == '_blank' %}{{ ux_icon('tabler:external-link', {'class': 'icon icon-sm ms-1 mb-2 opacity-75'}) }}{% endif %}
+                </span>
+            </a>
+        </li>
+    {% endif %}
+{% endblock %}
+
+{% block children_list %}
+    {% for item in item.children %}
+        {{ block('child_item') }}
+    {% endfor %}
+{% endblock %}
+
+{% block child_item %}
+    {%- set classes = item.attribute('class') is not empty ? [item.attribute('class')] : [] %}
+    {%- set target = item.linkAttributes and item.linkAttributes['target'] ? item.linkAttributes['target'] : '_self' %}
+    {%- if matcher.isCurrent(item) %}
+        {%- set classes = classes|merge([options.currentClass]) %}
+    {%- endif %}
+
+    {%- if classes is not empty %}
+        {%- set attributes = attributes|merge({'class': classes|join(' ')}) %}
+    {%- endif %}
+
+    <a
+        class="collapse-item {% if attributes.class is defined %}{{ attributes.class }}{% endif %}"
+        href="{{ item.uri }}" target="{{ target }}"
+    >
+        {{ block('label') }}{% if target == '_blank' %}{{ ux_icon('tabler:external-link', {'class': 'opacity-75'}) }}{% endif %}
+    </a>
+{% endblock %}
+
+{% block icon %}
+    {% set icon_name = item.labelAttribute('icon') %}
+    {% if icon_name %}{{ ux_icon(icon_name, {class: 'block h-full text-xl w-full *:stroke-[1.5]'}) }}{% endif %}
+{% endblock %}

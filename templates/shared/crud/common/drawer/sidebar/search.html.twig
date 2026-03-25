@@ -1,0 +1,24 @@
+<label class="input input-ghost min-h-11 focus:outline-none mx-2 mt-2 mb-4 w-auto focus-visible:outline-none focus-within:outline-none focus-visible:border focus-visible:border-primary-content/30 focus-within:border focus-within:border-primary-content/30 transition-colors">
+    <button
+        type="button" class="opacity-50"
+        data-sylius--daisyui-admin-ui--menu-search-target="icon"
+    >
+        {{ ux_icon('tabler:search', {'class': 'size-3'}) }}
+    </button>
+    <button
+        type="button" class="opacity-50 hidden cursor-pointer"
+        data-sylius--daisyui-admin-ui--menu-search-target="close"
+        data-action="sylius--daisyui-admin-ui--menu-search#clear"
+    >
+        {{ ux_icon('tabler:x', {'class': 'size-3'}) }}
+    </button>
+    <input
+        type="search" class="grow text-xs"
+        placeholder="{{ 'sylius.ui.search_menu'|trans }}..."
+        data-sylius--daisyui-admin-ui--menu-search-target="input"
+        data-action="
+            input->sylius--daisyui-admin-ui--menu-search#search
+            keydown.esc->sylius--daisyui-admin-ui--menu-search#clear
+        "
+    />
+</label>
