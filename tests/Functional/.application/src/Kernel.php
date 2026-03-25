@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace TestApplication\Sylius\DaisyuiAdminUi;
 
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
+use Knp\Bundle\MenuBundle\KnpMenuBundle;
 use Sylius\AdminUi\Symfony\SyliusAdminUiBundle;
+use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 use Sylius\DaisyuiAdminUi\Symfony\SyliusDaisyuiAdminUiBundle;
 use Sylius\TwigExtra\Symfony\SyliusTwigExtraBundle;
 use Sylius\TwigHooks\SyliusTwigHooksBundle;
@@ -44,5 +46,7 @@ class Kernel extends BaseKernel
         yield new StimulusBundle();
         yield new SyliusAdminUiBundle();
         yield new SyliusDaisyuiAdminUiBundle();
+        yield new KnpMenuBundle();
+        yield new SyliusResourceBundle();
     }
 }
