@@ -17,6 +17,8 @@
     --nav-link-spacing-x: --spacing(4);
     --font-sans: 'Inter';
     --font-mono: 'Menlo';
+    --font-size-base: var(--text-sm);
+    --font-weight-base: var(--font-weight-normal);
 }
 
 @plugin "../dist/daisyui-theme.mjs" {
@@ -30,6 +32,8 @@
     --nav-link-spacing-x: --spacing(4);
     --font-sans: 'Inter';
     --font-mono: 'Menlo';
+    --font-size-base: var(--text-sm);
+    --font-weight-base: var(--font-weight-normal);
 }
 
 @source "../../templates/**/*.html.twig";
@@ -48,10 +52,12 @@ body {
     touch-action: manipulation;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-base);
 }
 
 .page {
-    @apply mx-auto min-h-screen w-full;
+    @apply mx-auto min-h-screen w-full flex flex-col;
 }
 
 .label.required:after {
@@ -68,4 +74,8 @@ body {
 
 .btn {
     @apply font-normal;
+}
+
+.icon {
+    @apply *:stroke-[1.5] text-secondary;
 }

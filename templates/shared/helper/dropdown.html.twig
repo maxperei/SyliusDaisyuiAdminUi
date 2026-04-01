@@ -1,0 +1,53 @@
+{% macro default(params) %}
+    {% set params = {
+        button: {},
+        class: null,
+        content: null,
+        customTrigger: null,
+        direction: 'down'
+    }|merge(params) %}
+
+    {% if params.direction == 'down' %}{% set drop = '' %}{% endif %}
+    {% if params.direction == 'down-end' %}{% set drop = ' dropdown-end' %}{% endif %}
+
+    <div class="dropdown{{ drop }} {{ params.class }}">
+        {% if params.customTrigger %}
+            {{ params.customTrigger }}
+        {% else %}
+            {{ button.default(params.button|merge({ dropdown: true })) }}
+        {% endif %}
+        {{ params.content }}
+    </div>
+{% endmacro %}
+
+{% macro list(params, items) %}
+    {% set content %}
+        <ul class="menu dropdown-content flex bg-base-100 rounded-box z-1 mt-px p-1 px-0 min-w-44 shadow-xl border border-base-content/10" tabindex="-1">
+            {% for item in items %}
+                {% set item = {
+                    type: null,
+                    class: null,
+                    icon: null
+                }|merge(item) %}
+
+                {% set extra_class = item.class ? ' ' ~ item.class %}
+                {% if item.type == 'header' %}
+                    <li class="{{ item.class ? extra_class }}">
+                        <span class="menu-title">{{ item.title|trans }}</span>
+                    </li>
+                {% elseif item.type == 'divider' %}
+                    <span class="divider my-0 {{ item.class ? extra_class }}"></span>
+                {% else %}
+                    <li class="{{ item.class ? extra_class }}">
+                        <a class="flex rounded-none" href="{{ item.url }}" {{ sylius_test_html_attribute('user-dropdown-item', item.title|trans) }}>
+                            {{ item.icon ? ux_icon(item.icon, {'class': 'size-5 icon' ~ extra_class }) }}
+                            <span>{{ item.title|trans }}</span>
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endset %}
+
+    {{ _self.default(params|merge({ content: content })) }}
+{% endmacro %}

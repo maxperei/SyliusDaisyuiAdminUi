@@ -1,0 +1,18 @@
+{% import '@SyliusDaisyuiAdminUi/shared/helper/avatar.html.twig' as avatar %}
+{% import '@SyliusDaisyuiAdminUi/shared/helper/dropdown.html.twig' as dropdown %}
+
+{% if user %}
+    {% set dropdown_trigger %}
+        <div tabindex="0" role="button" class="flex cursor-pointer p-0 leading-none">
+            <div class="btn btn-soft btn-square bg-base-100 size-8">
+                {{ avatar.small() }}
+            </div>
+            <div class="xl:block hidden ps-2">
+                <small class="mb-1 text-xs text-base-content/60">{{ 'sylius.ui.hello'|trans }}</small>
+                <div>{{ user.userIdentifier }}</div>
+            </div>
+        </div>
+    {% endset %}
+
+    {{ dropdown.list({ customTrigger: dropdown_trigger, direction: 'down-end' }, menu_items) }}
+{% endif %}

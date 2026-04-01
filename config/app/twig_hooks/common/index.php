@@ -18,6 +18,9 @@ return static function (ContainerConfigurator $configurator): void {
                 'aside' => [
                     'template' => '@SyliusDaisyuiAdminUi/shared/crud/common/aside.html.twig',
                 ],
+                'header' => [
+                    'template' => '@SyliusDaisyuiAdminUi/shared/crud/common/header.html.twig',
+                ]
             ],
         ],
     ]);
