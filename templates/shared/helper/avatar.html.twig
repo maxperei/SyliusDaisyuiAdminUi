@@ -1,0 +1,15 @@
+{% macro default(img, class) %}
+    <div class="avatar">
+        <div class="{{ class|default('w-10') }} rounded">
+            {% if img %}
+                <img src="{{ img }}" alt="Sylius Avatar">
+            {% else %}
+                {{ ux_icon('tabler:user') }}
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro small(img, class) %}
+    {{ _self.default(img,  'w-5 ' ~ class) }}
+{% endmacro %}
