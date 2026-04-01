@@ -23,7 +23,7 @@ final class AdminMenuBuilder implements MenuBuilderInterface
             ->addChild('dashboard', [
                 'route' => 'sylius_admin_ui_dashboard',
             ])
-            ->setLabel('app.ui.dashboard')
+            ->setLabel('Dashboard')
             ->setLabelAttribute('icon', 'tabler:dashboard')
         ;
 
@@ -36,13 +36,13 @@ final class AdminMenuBuilder implements MenuBuilderInterface
     {
         $library = $menu
             ->addChild('library')
-            ->setLabel('app.menu.library')
+            ->setLabel('Library')
             ->setLabelAttribute('icon', 'tabler:books')
             ->setExtra('translation_domain', 'menu')
         ;
 
         $library->addChild('books', ['route' => 'app_book_index'])
-            ->setLabel('app.ui.books')
+            ->setLabel('Books')
             ->setLabelAttribute('icon', 'book')
         ;
     }

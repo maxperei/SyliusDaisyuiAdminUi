@@ -15,9 +15,9 @@ return static function (ContainerConfigurator $configurator): void {
                 ]
             ],
             'sylius_admin.common.index' => [
-                'drawer' => [
-                    'template' => '@SyliusDaisyuiAdminUi/shared/crud/common/drawer.html.twig',
-                ]
+                'aside' => [
+                    'template' => '@SyliusDaisyuiAdminUi/shared/crud/common/aside.html.twig',
+                ],
             ],
         ],
     ]);
